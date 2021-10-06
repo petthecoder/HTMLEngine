@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="resources/style.css">
+    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="top-menu">
+        <div class="execution-buttons">
+            <button class="top-menu-btn" onclick="createNewItem()"><i class="fa fa-plus top-menu-icon green"></i></button>
+            <button class="top-menu-btn" onclick="startLifeCycle()"><i class="fa fa-play top-menu-icon green"></i></button>
+            <button class="top-menu-btn" onclick="pauseLifeCycle()"><i class="fa fa-pause top-menu-icon green"></i></button>
+        </div>
+    </div>
+    <div id="properties-displayer" class="properties-displayer">
+        Position: <br>
+        X <input id="properties-position-X" onkeyup="changePropertiesX()"> px<br>
+        Y <input id="properties-position-Y" onkeyup="changePropertiesY()"> px
+        <br><br>
+        Color: <input id="properties-color" onkeyup="changePropertiesColor()">
+
+    </div>
+    <div id="editor-area" class="editor-area"></div>
+
+    <script src="./js/commonFunctions.js"></script>
+    <script src="./js/propertiesFunctions.js"></script>
+    <script src="./js/physicsFunctions.js"></script>
+    <script src="./js/editorFunctions.js"></script>
+    <script src="./main.js"></script>
+</body>
