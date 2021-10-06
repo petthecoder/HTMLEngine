@@ -64,7 +64,14 @@ document.addEventListener('mousemove', function(event) {
 }, true);
 
 activeItem = newItem;
-var itemToAdd = {id: newItem.id, color: newItem.style.background, positionX: newItem.style.left, positionY: newItem.style.top, item: newItem }
+var itemToAdd = {
+    id: newItem.id, 
+    color: newItem.style.background, 
+    positionX: newItem.style.left, 
+    positionY: newItem.style.top, 
+    sizeX: newItem.style.width, 
+    sizeY: newItem.style.height, 
+    item: newItem }
 itemsOnScreen[newItem.id] = itemToAdd;
 itemsWithGravity.push(itemToAdd)
 }

@@ -13,11 +13,14 @@
     </div>
     <div id="properties-displayer" class="properties-displayer">
         Position: <br>
-        X <input id="properties-position-X" onkeyup="changePropertiesX()"> px<br>
-        Y <input id="properties-position-Y" onkeyup="changePropertiesY()"> px
+        X <input id="properties-position-X" type="number" onkeyup="changePropertiesPosX()"> px<br>
+        Y <input id="properties-position-Y" type="number" onkeyup="changePropertiesPosY()"> px
+        <br><br>
+        Size: <br>
+        X <input id="properties-size-X" type="number" onkeyup="changePropertiesSizeX()"> px<br>
+        Y <input id="properties-size-Y" type="number" onkeyup="changePropertiesSizeY()"> px
         <br><br>
         Color: <input id="properties-color" onkeyup="changePropertiesColor()">
-
     </div>
     <div id="editor-area" class="editor-area"></div>
 
