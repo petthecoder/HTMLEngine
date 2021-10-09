@@ -21,12 +21,22 @@
         Y <input id="properties-size-Y" type="number" onkeyup="changePropertiesSizeY()"> px
         <br><br>
         Color: <input id="properties-color" onkeyup="changePropertiesColor()">
+        <br><br>
+        Speed: <br>
+        X: <input id="properties-speedX" disabled><br>
+        Y: <input id="properties-speedY" disabled><br>
+        <br><br>
+        Gravity: <input type="checkbox" id="properties-gravity" onchange="changePropertiesGravity()">
+        <br><br>
+        Collide: <input type="checkbox" id="properties-collide" onchange="changePropertiesCollide()">
+        <br><br>
+        Bouncing Factor: <input id="properties-bouncing-factor" type="number" onkeyup="changePropertiesBouncingFactor()">
     </div>
     <div id="editor-area" class="editor-area"></div>
 
     <script src="./js/commonFunctions.js"></script>
     <script src="./js/propertiesFunctions.js"></script>
     <script src="./js/physicsFunctions.js"></script>
-    <script src="./js/editorFunctions.js"></script>
+    <script src="./js/objectCreationFunctions.js"></script>
     <script src="./main.js"></script>
 </body>
