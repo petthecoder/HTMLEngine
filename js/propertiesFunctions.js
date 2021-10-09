@@ -60,6 +60,7 @@ function changePropertiesSizeY(){
 function changePropertiesGravity(){
     if(loadedData != undefined){
         if(loadedData.hasGravity){
+            loadedData.speedY = 0;
             itemsWithGravity = itemsWithGravity.filter(function(value){ 
                 return value.id != loadedData.id;
             });
