@@ -88,11 +88,23 @@ function addItemToLists(item){
         item: item,
         hasGravity: true,
         hasCollide: true,
-        bouncingFactor: 0 }
+        bouncingFactor: 0}
 
         itemsOnScreen[item.id] = itemToAdd;
         itemsWithGravity.push(itemToAdd);
         itemsWithCollide.push(itemToAdd);
+
+}
+
+function removeItem(item){
+    delete itemsOnScreen[item.id];
+    itemsWithGravity = itemsWithGravity.filter(function(value){ 
+        return value.id != item.id;
+    });
+    itemsWithCollide = itemsWithCollide.filter(function(value){ 
+        return value.id != item.id;
+    });
+    item.item.remove();
 
 }
 

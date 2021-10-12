@@ -36,6 +36,7 @@
             itemsOnScreen[itemId].positionY = parseFloat(itemsOnScreen[itemId].item.style.top.replace("px", ""));
             itemsOnScreen[itemId].item.style.left = parseFloat(itemsOnScreen[itemId].item.style.left.replace("px", ""))+itemsOnScreen[itemId].speedX + 'px';
             itemsOnScreen[itemId].positionX = parseFloat(itemsOnScreen[itemId].item.style.left.replace("px", ""));
+            garbageCollection(itemId);
         }
     }
 
@@ -60,17 +61,23 @@
         var itemMinPosY = parseFloat(item.positionY) + parseFloat(item.speedY);
         var colMinPosY = parseFloat(collider.positionY) + parseFloat(collider.speedY);
         var colMaxPosY = parseFloat(collider.positionY) + parseFloat(collider.sizeY) + parseFloat(collider.speedY);
+        var combinedbouncing = parseFloat(item.bouncingFactor) + parseFloat(collider.bouncingFactor);
         if((itemMinPosX < colMaxPosX && itemMinPosX > colMinPosX) ||
             (itemMaxPosX < colMaxPosX && itemMaxPosX > collider.positionX)){
-                if(itemMaxPosY >= colMinPosY && itemMaxPosY <= colMaxPosY && itemMinPosY <= colMinPosY){
-                    if(item.speedY>0){
-                        var combinedbouncing = parseFloat(item.bouncingFactor) + parseFloat(collider.bouncingFactor);
-                        console.log(combinedbouncing)
-                        item.speedY = item.speedY > 0 ? -1 * item.speedY * combinedbouncing: item.speedY * combinedbouncing;
-                        item.speedY = Math.abs(item.speedY) > globalConfig.bouncingLimitSpeed ? item.speedY: 0;
-                        item.item.style.top  = collider.positionY - item.sizeY + 'px';
-                        item.positionY = collider.positionY-item.sizeY;
-                    }
+                if(itemMaxPosY > colMinPosY && itemMaxPosY < colMaxPosY && itemMinPosY < colMinPosY){
+                    item.speedY = item.speedY > 0? -1 * item.speedY * combinedbouncing: item.speedY * combinedbouncing;
+                    item.speedY = Math.abs(item.speedY) > globalConfig.bouncingLimitSpeed ? item.speedY: 0;
+                    item.item.style.top  = collider.positionY - item.sizeY + 'px';
+                    item.positionY = collider.positionY-item.sizeY;
+                    collider.speedY = collider.speedY > 0? -1 * collider.speedY * combinedbouncing: collider.speedY * combinedbouncing;
+                    collider.speedY = Math.abs(collider.speedY) > globalConfig.bouncingLimitSpeed ? collider.speedY: 0;
+                } else if(itemMaxPosY > colMaxPosY && itemMinPosY < colMaxPosY && itemMinPosY > colMinPosY){
+                    collider.speedY = collider.speedY > 0? -1 * collider.speedY * combinedbouncing: collider.speedY * combinedbouncing;
+                    collider.speedY = Math.abs(collider.speedY) > globalConfig.bouncingLimitSpeed ? collider.speedY: 0;
+                    collider.item.style.top  = item.positionY - collider.sizeY + 'px';
+                    collider.positionY = item.positionY-collider.sizeY;
+                    item.speedY = item.speedY > 0? -1 * item.speedY * combinedbouncing: item.speedY * combinedbouncing;
+                    item.speedY = Math.abs(item.speedY) > globalConfig.bouncingLimitSpeed ? item.speedY: 0;
                 }
         }
         return true;

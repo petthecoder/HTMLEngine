@@ -2,24 +2,26 @@ var loadedData;
 
 function loadDataAtProperties(id){
     loadedData = itemsOnScreen[id];
-    document.getElementById("properties-position-X").value = loadedData.positionX;
-    document.getElementById("properties-position-Y").value = loadedData.positionY;
-    document.getElementById("properties-size-X").value = loadedData.sizeX;
-    document.getElementById("properties-size-Y").value = loadedData.sizeY;
-    document.getElementById("properties-color").value = loadedData.color;
-    document.getElementById("properties-speedX").value = loadedData.speedX;
-    document.getElementById("properties-speedY").value = loadedData.speedY;
-    if(loadedData.hasGravity){
-        document.getElementById("properties-gravity").checked = true;
-    }else{
-        document.getElementById("properties-gravity").checked = false;
+    if(loadedData != null){
+        document.getElementById("properties-position-X").value = loadedData.positionX;
+        document.getElementById("properties-position-Y").value = loadedData.positionY;
+        document.getElementById("properties-size-X").value = loadedData.sizeX;
+        document.getElementById("properties-size-Y").value = loadedData.sizeY;
+        document.getElementById("properties-color").value = loadedData.color;
+        document.getElementById("properties-speedX").value = loadedData.speedX;
+        document.getElementById("properties-speedY").value = loadedData.speedY;
+        if(loadedData.hasGravity){
+            document.getElementById("properties-gravity").checked = true;
+        }else{
+            document.getElementById("properties-gravity").checked = false;
+        }
+        if(loadedData.hasCollide){
+            document.getElementById("properties-collide").checked = true;
+        }else{
+            document.getElementById("properties-collide").checked = false;
+        }
+        document.getElementById("properties-bouncing-factor").value = loadedData.bouncingFactor;
     }
-    if(loadedData.hasCollide){
-        document.getElementById("properties-collide").checked = true;
-    }else{
-        document.getElementById("properties-collide").checked = false;
-    }
-    document.getElementById("properties-bouncing-factor").value = loadedData.bouncingFactor;
 }
 
 function changePropertiesColor(){
@@ -91,4 +93,8 @@ function changePropertiesBouncingFactor(){
         loadedData.bouncingFactor = document.getElementById("properties-bouncing-factor").value;
     }
 
+}
+
+function resetLoadedData(){
+    loadedData = null;
 }
